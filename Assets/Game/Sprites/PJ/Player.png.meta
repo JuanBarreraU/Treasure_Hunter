@@ -249,12 +249,12 @@ TextureImporter:
       name: Player_16
       rect:
         serializedVersion: 2
-        x: 480
-        y: 219
-        width: 66
-        height: 135
+        x: 482.1253
+        y: 218.84439
+        width: 64.6875
+        height: 131.09378
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.47728994, y: 0.51608557}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -263,12 +263,12 @@ TextureImporter:
       name: Player_17
       rect:
         serializedVersion: 2
-        x: 766
-        y: 219
-        width: 68
-        height: 131
+        x: 768.0314
+        y: 219.20314
+        width: 64.6875
+        height: 129.14061
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.494201, y: 0.5056261}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -318,6 +318,6 @@ TextureImporter:
     outline: []
     physicsShape: []
   spritePackingTag: 
-  userData: 100188270040430
+  userData: 100216292367115
   assetBundleName: 
   assetBundleVariant: 
