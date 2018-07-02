@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Stairs
+  - Platform
+  - SubPlatformDef
   layers:
   - Default
   - TransparentFX
@@ -27,8 +29,8 @@ TagManager:
   - EnemyWeapon
   - BossWeakPoint
   - Bullet
-  - 
-  - 
+  - Platform
+  - CheckPlatform
   - 
   - 
   - 
@@ -38,7 +40,7 @@ TagManager:
   - 
   - 
   - PlayerDrop
-  - Platform
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
