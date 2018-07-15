@@ -12,6 +12,12 @@ public class PlayerCheckFloorController : MonoBehaviour
             this.GetComponentInParent<PlayerMovementController>().blInFloor = true;
         }
 
+        if(col.tag == "SubPlatformDef")
+        {
+            this.GetComponentInParent<PlayerMovementController>().blInSubPlatform = true;
+            this.GetComponentInParent<Rigidbody2D>().gravityScale = 0;
+        }
+
     }
 
     public void OnTriggerExit2D(Collider2D col)
@@ -19,6 +25,11 @@ public class PlayerCheckFloorController : MonoBehaviour
         if (col.tag == "Platform")
         {
             this.GetComponentInParent<PlayerMovementController>().blInFloor = false;
+        }
+        if (col.tag == "SubPlatformDef")
+        {
+            this.GetComponentInParent<PlayerMovementController>().blInSubPlatform = false;
+            this.GetComponentInParent<Rigidbody2D>().gravityScale = 2;
         }
     }
 

@@ -8,6 +8,7 @@ TagManager:
   - Stairs
   - Platform
   - SubPlatformDef
+  - Hang
   layers:
   - Default
   - TransparentFX
