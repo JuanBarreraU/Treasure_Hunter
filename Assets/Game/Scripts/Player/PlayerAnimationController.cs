@@ -20,6 +20,12 @@ public class PlayerAnimationController : MonoBehaviour
 		
 	}
 
+    public void Idle()
+    {
+        ResetAllAnimations();
+        animPlayer.SetBool("Idle", true);
+    }
+
     public void Walk()
     {
         ResetAllAnimations();
@@ -28,8 +34,8 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void StopWalk()
     {
-        ResetAllAnimations();
-        animPlayer.SetBool("Walk", false);
+        //ResetAllAnimations();
+        //animPlayer.SetBool("Walk", false);
     }
     
     public void StopClimp()
@@ -60,11 +66,7 @@ public class PlayerAnimationController : MonoBehaviour
         animPlayer.SetBool("StopClimp", false);
     }
 
-    public void Idle()
-    {
-        ResetAllAnimations();
-        animPlayer.SetBool("Idle", true);
-    }
+    
 
     public void Climp()
     {

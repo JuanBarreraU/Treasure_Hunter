@@ -69,6 +69,7 @@ public class PlayerMovementController : MonoBehaviour
         if(blClimp == true && blCanClimp == true)
         {
             rbPlayer.velocity = new Vector2(fltDirX, rbPlayer.velocity.y);
+            this.GetComponent<PlayerAnimationController>().Climp();
         }
 
         if(blGoToUpOrDown == true && blCanUpOrDown == true)
