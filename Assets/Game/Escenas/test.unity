@@ -430,7 +430,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1950600231}
+        - m_Target: {fileID: 1950600235}
           m_MethodName: StopClimp
           m_Mode: 1
           m_Arguments:
@@ -563,7 +563,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 3.04}
+  m_Size: {x: 0.05, y: 2.9}
   m_EdgeRadius: 0
 --- !u!1 &1397902623 stripped
 GameObject:
@@ -1180,7 +1180,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.47, y: -1.8}
+  m_Offset: {x: 4.332346, y: -1.85}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1191,7 +1191,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 0.03}
+  m_Size: {x: 0.3046937, y: 0.029999971}
   m_EdgeRadius: 0
 --- !u!1 &1950600228 stripped
 GameObject:
@@ -1623,25 +1623,25 @@ Prefab:
         type: 2}
       propertyPath: m_SpriteMesh
       value: 
-      objectReference: {fileID: 11400000, guid: f135b9dfb68f5054e845794f6c582c12,
+      objectReference: {fileID: 11400000, guid: c04ff8a0b5b100242addad29c6bd7516,
         type: 2}
     - target: {fileID: 114102032112085636, guid: a8507e4347df88e4b9a979050e60f7a1,
         type: 2}
       propertyPath: m_SpriteMesh
       value: 
-      objectReference: {fileID: 11400000, guid: bb26e5aa3b5590f4c824736fe3f3cae9,
+      objectReference: {fileID: 11400000, guid: d0552a78a01493445a4cd8312a414b2f,
         type: 2}
     - target: {fileID: 114168506925923480, guid: a8507e4347df88e4b9a979050e60f7a1,
         type: 2}
       propertyPath: m_SpriteMesh
       value: 
-      objectReference: {fileID: 11400000, guid: e8932813c2ce8b6489f7878073483c0a,
+      objectReference: {fileID: 11400000, guid: b1cd320b95d0a9144903fe794b8fd151,
         type: 2}
     - target: {fileID: 114337213692946812, guid: a8507e4347df88e4b9a979050e60f7a1,
         type: 2}
       propertyPath: m_SpriteMesh
       value: 
-      objectReference: {fileID: 11400000, guid: 57d09da8b7039e64189de64863ccd253,
+      objectReference: {fileID: 11400000, guid: be251525f3d6bc149b446a74cdfb34d9,
         type: 2}
     - target: {fileID: 4195315718955472, guid: a8507e4347df88e4b9a979050e60f7a1, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1657,7 +1657,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4040335460673146, guid: a8507e4347df88e4b9a979050e60f7a1, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -4149.462
+      value: -3789.462
       objectReference: {fileID: 0}
     - target: {fileID: 4593830122427516, guid: a8507e4347df88e4b9a979050e60f7a1, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1941,6 +1941,22 @@ Prefab:
     - target: {fileID: 4593830122427516, guid: a8507e4347df88e4b9a979050e60f7a1, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 17.418001
+      objectReference: {fileID: 0}
+    - target: {fileID: 114309689073313798, guid: a8507e4347df88e4b9a979050e60f7a1,
+        type: 2}
+      propertyPath: m_SpriteMesh
+      value: 
+      objectReference: {fileID: 11400000, guid: b026eceb7dc0e7c498fdfb0ab936d560,
+        type: 2}
+    - target: {fileID: 114309689073313798, guid: a8507e4347df88e4b9a979050e60f7a1,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 137353827608584506, guid: a8507e4347df88e4b9a979050e60f7a1,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61363879190558034, guid: a8507e4347df88e4b9a979050e60f7a1, type: 2}
