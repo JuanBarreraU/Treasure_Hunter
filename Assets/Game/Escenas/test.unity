@@ -230,6 +230,72 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!1 &797641892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 797641893}
+  - component: {fileID: 797641895}
+  - component: {fileID: 797641894}
+  m_Layer: 13
+  m_Name: CanDownCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &797641893
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 797641892}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1950600233}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &797641894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 797641892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc18086a356886344a4fed7053d4031b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &797641895
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 797641892}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.29, y: -1.7}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 3.84}
+  m_EdgeRadius: 0
 --- !u!1 &845392149
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,17 +487,6 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1950600235}
           m_MethodName: StopWalk
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1950600235}
-          m_MethodName: StopClimp
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -812,6 +867,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4445155579130042, guid: 17accbf8ac3e85b4ea000c8482728f8b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.98
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2113883504194226350, guid: 17accbf8ac3e85b4ea000c8482728f8b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 17accbf8ac3e85b4ea000c8482728f8b, type: 2}
@@ -882,17 +941,6 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1950600235}
           m_MethodName: StopWalk
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1950600235}
-          m_MethodName: StopClimp
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1235,7 +1283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7efc3af2e777f42b890034dbadee74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fltMovementSpeed: 150
+  fltMovementSpeed: 200
   fltClimpSpeed: 50
   fltJumpForce: 300
   blWalk: 0
@@ -1268,10 +1316,12 @@ MonoBehaviour:
   blGoToUpOrDown: 0
   blInFloor: 0
   blCanUpOrDown: 0
+  blCanDown: 0
   blCanClimp: 0
   blClimp: 0
   blInSubPlatform: 0
   blUp: 0
+  blDown: 0
   blStopClimp: 0
 --- !u!1 &2000956620 stripped
 GameObject:
@@ -1284,7 +1334,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2000956620}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
   m_Name: 
@@ -1293,6 +1343,53 @@ MonoBehaviour:
   axisValue: 1
   responseSpeed: 10000
   returnToCentreSpeed: 10000
+--- !u!114 &2000956626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2000956620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1950600235}
+          m_MethodName: Down
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1950600235}
+          m_MethodName: StopUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1001 &2009299217
 Prefab:
   m_ObjectHideFlags: 0
@@ -1623,25 +1720,25 @@ Prefab:
         type: 2}
       propertyPath: m_SpriteMesh
       value: 
-      objectReference: {fileID: 11400000, guid: c04ff8a0b5b100242addad29c6bd7516,
+      objectReference: {fileID: 11400000, guid: f135b9dfb68f5054e845794f6c582c12,
         type: 2}
     - target: {fileID: 114102032112085636, guid: a8507e4347df88e4b9a979050e60f7a1,
         type: 2}
       propertyPath: m_SpriteMesh
       value: 
-      objectReference: {fileID: 11400000, guid: d0552a78a01493445a4cd8312a414b2f,
+      objectReference: {fileID: 11400000, guid: bb26e5aa3b5590f4c824736fe3f3cae9,
         type: 2}
     - target: {fileID: 114168506925923480, guid: a8507e4347df88e4b9a979050e60f7a1,
         type: 2}
       propertyPath: m_SpriteMesh
       value: 
-      objectReference: {fileID: 11400000, guid: b1cd320b95d0a9144903fe794b8fd151,
+      objectReference: {fileID: 11400000, guid: e8932813c2ce8b6489f7878073483c0a,
         type: 2}
     - target: {fileID: 114337213692946812, guid: a8507e4347df88e4b9a979050e60f7a1,
         type: 2}
       propertyPath: m_SpriteMesh
       value: 
-      objectReference: {fileID: 11400000, guid: be251525f3d6bc149b446a74cdfb34d9,
+      objectReference: {fileID: 11400000, guid: 57d09da8b7039e64189de64863ccd253,
         type: 2}
     - target: {fileID: 4195315718955472, guid: a8507e4347df88e4b9a979050e60f7a1, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1957,6 +2054,11 @@ Prefab:
         type: 2}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114840676723730442, guid: a8507e4347df88e4b9a979050e60f7a1,
+        type: 2}
+      propertyPath: m_Frame
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61363879190558034, guid: a8507e4347df88e4b9a979050e60f7a1, type: 2}

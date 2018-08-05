@@ -22,11 +22,14 @@ public class MovementController : MonoBehaviour
     public bool blGoToUpOrDown = false;
     public bool blInFloor = false;
     public bool blCanUpOrDown = false;
+    public bool blCanDown = false;
     public bool blCanClimp = false;
     public bool blClimp = false;
     public bool blInSubPlatform = false;
     public bool blUp = false;
+    public bool blDown = false;
     public bool blStopClimp = false;
+    
 
     // Use this for initialization
     void Start ()
@@ -43,6 +46,11 @@ public class MovementController : MonoBehaviour
     {
         fltDirX = CrossPlatformInputManager.GetAxis("Horizontal") * fltMovementSpeed * Time.deltaTime;
         fltDirY = CrossPlatformInputManager.GetAxis("Vertical") * fltClimpSpeed * Time.deltaTime;
+
+        if (CrossPlatformInputManager.GetButtonDown("Jump"))
+        {
+            DoJump();
+        }
     }
 
     public void FixedUpdate()
@@ -52,33 +60,53 @@ public class MovementController : MonoBehaviour
             this.GetComponent<PlayerAnimationController>().Idle();
         }
 
-        if (blWalk == true)
-        {
-            rbPlayer.velocity = new Vector2(fltDirX, rbPlayer.velocity.y);
-            this.GetComponent<PlayerAnimationController>().Walk();
-        }
-
         
 
-        if(blUp == true && blCanUpOrDown == true)
+        if (blWalk == true)
+        {
+            if (blInFloor == true || blInSubPlatform == true) 
+            {
+                rbPlayer.velocity = new Vector2(fltDirX, rbPlayer.velocity.y);
+                this.GetComponent<PlayerAnimationController>().Walk();
+            }
+            
+            if(blCanClimp == true)
+            {
+                Climp();
+            }
+        }
+
+        if (blWalk == false)
+        {
+            if(blInFloor == true)
+            {
+                Idle();
+            }
+
+            if(blInSubPlatform == true && blDown == false && blUp == false)
+            {
+                StopUp();
+            }
+
+            if (blCanClimp == true)
+            {
+                StopClimp();
+            }
+        }
+
+
+        if (blUp == true && blCanUpOrDown == true)
         { 
             rbPlayer.velocity = new Vector2(rbPlayer.velocity.x, fltDirY);
             rbPlayer.gravityScale = 0;
             this.GetComponent<PlayerAnimationController>().Up();
         }
 
-        if(blWalk == true && blCanClimp == true && blInSubPlatform == false && blCanUpOrDown == false)
+        if (blDown == true && blCanDown == true && blInFloor == false)
         {
-            if(blStopClimp == false)
-            {
-                Climp();
-            }
-
-            if (blStopClimp == true)
-            {
-                StopClimp();
-            }
-
+            rbPlayer.velocity = new Vector2(rbPlayer.velocity.x, -fltDirY);
+            rbPlayer.gravityScale = 0;
+            this.GetComponent<PlayerAnimationController>().Up();
         }
 
         Fall();
@@ -88,26 +116,19 @@ public class MovementController : MonoBehaviour
 
     public void Idle()
     {
-        
-            rbPlayer.velocity = new Vector2(0f, 0f);
-            this.GetComponent<PlayerAnimationController>().Idle();
-        
+        rbPlayer.velocity = new Vector2(0f, 0f);
+        this.GetComponent<PlayerAnimationController>().Idle();
     }
 
     public void Walk()
     {
-        if (blInFloor == true || blInSubPlatform == true || blCanClimp == true)
-        {
-            blWalk = true;
-            blStopClimp = false;
-        }
-        
+        blWalk = true;
+        blStopClimp = false;
     }
 
     public void StopWalk()
     {
-            blWalk = false;
-            Idle();
+        blWalk = false;
     }
 
     public void Up()
@@ -116,30 +137,47 @@ public class MovementController : MonoBehaviour
         {
             blUp = true;
         }
-        
+    }
+
+    public void Down()
+    {
+        if (blCanDown == true)
+        {
+            blDown = true;
+        }
+
+        if (blCanClimp == true && blInSubPlatform == false)
+        {
+            GetLoose();
+        }
     }
 
     public void StopUp()
     {
+        if (blCanUpOrDown == true && blInFloor == false)
+        {
             blUp = false;
+            blDown = false;
             rbPlayer.velocity = new Vector2(0f, 0f);
             this.GetComponent<PlayerAnimationController>().StopUp();
+        }
+        
     }
 
     public void Climp()
     {
 
-            blClimp = true;
-            this.GetComponent<PlayerAnimationController>().Climp();
+        blClimp = true;
+        rbPlayer.velocity = new Vector2(fltDirX, rbPlayer.velocity.y);
+        this.GetComponent<PlayerAnimationController>().Climp();
     }
 
     public void StopClimp()
     {
-        if (blWalk == false && blCanClimp == true && blInSubPlatform == false && blCanUpOrDown == false)
-        {
-            blStopClimp = true;
-            this.GetComponent<PlayerAnimationController>().StopClimp();
-        }
+        blClimp = false;
+        blStopClimp = true;
+        rbPlayer.velocity = new Vector2(0f, 0f);
+        this.GetComponent<PlayerAnimationController>().StopClimp();
     }
 
     public void Fall()
@@ -147,6 +185,19 @@ public class MovementController : MonoBehaviour
         if(blInFloor == false && blInSubPlatform == false && blCanUpOrDown == false && blCanClimp == false)
         {
             rbPlayer.gravityScale = 2;
+        }
+    }
+
+    public void GetLoose()
+    {
+        rbPlayer.gravityScale = 2;
+    }
+
+    public void DoJump()
+    {
+        if (rbPlayer.velocity.y == 0 && blInFloor == true)
+        {
+            rbPlayer.AddForce(new Vector2(0, fltJumpForce), ForceMode2D.Force);
         }
     }
 

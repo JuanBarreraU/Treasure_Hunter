@@ -11,6 +11,7 @@ public class PlayerCheckFloorController : MonoBehaviour
         {
             //this.GetComponentInParent<PlayerMovementController>().blInFloor = true;
             this.GetComponentInParent<MovementController>().blInFloor = true;
+            this.GetComponentInParent<Rigidbody2D>().gravityScale = 2;
         }
 
         if(col.tag == "SubPlatformDef")

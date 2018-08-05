@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerClimpCheckController : MonoBehaviour {
+public class PlayerClimpCheckController : MonoBehaviour
+{
+    public void OnTriggerStart(Collider2D col)
+    {
+        if (col.tag == "Hang")
+        {
+            this.GetComponentInParent<Rigidbody2D>().gravityScale = 0;
+        }
+    }
 
-    //public void OnTriggerEnter2D(Collider2D col)
-    //{
-    //    if (col.tag == "Hang")
-    //    {
 
-    //    }
-    //}
 
     public void OnTriggerStay2D(Collider2D col)
     {
         if (col.tag == "Hang")
         {
             this.GetComponentInParent<MovementController>().blCanClimp = true;
-            this.GetComponentInParent<Rigidbody2D>().gravityScale = 0;
-            print("Cuerda");
         }
     }
 
@@ -27,6 +27,7 @@ public class PlayerClimpCheckController : MonoBehaviour {
         if (col.tag == "Hang")
         {
             this.GetComponentInParent<MovementController>().blCanClimp = false;
+            this.GetComponentInParent<MovementController>().blClimp = false;
         }
     }
 }
