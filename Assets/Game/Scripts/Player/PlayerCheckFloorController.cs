@@ -10,15 +10,14 @@ public class PlayerCheckFloorController : MonoBehaviour
         if(col.tag == "Platform")
         {
             //this.GetComponentInParent<PlayerMovementController>().blInFloor = true;
-            this.GetComponentInParent<MovementController>().blInFloor = true;
-            this.GetComponentInParent<Rigidbody2D>().gravityScale = 2;
+            this.GetComponentInParent<PlayerMovementController>().blInFloor = true;
+            //this.GetComponentInParent<Rigidbody2D>().gravityScale = 2;
         }
 
-        if(col.tag == "SubPlatformDef")
+        if (col.tag == "SubPlatformDef")
         {
-            this.GetComponentInParent<MovementController>().blInSubPlatform = true;
+            this.GetComponentInParent<PlayerMovementController>().blInSubPlatform = true;
             this.GetComponentInParent<Rigidbody2D>().gravityScale = 0;
-            print("Subplatform");
         }
 
     }
@@ -27,12 +26,13 @@ public class PlayerCheckFloorController : MonoBehaviour
     {
         if (col.tag == "Platform")
         {
-            this.GetComponentInParent<MovementController>().blInFloor = false;
+            this.GetComponentInParent<PlayerMovementController>().blInFloor = false;
         }
+
         if (col.tag == "SubPlatformDef")
         {
-            this.GetComponentInParent<MovementController>().blInSubPlatform = false;
-            //this.GetComponentInParent<Rigidbody2D>().gravityScale = 2;
+            this.GetComponentInParent<PlayerMovementController>().blInSubPlatform = false;
+            this.GetComponentInParent<Rigidbody2D>().gravityScale = 2;
         }
     }
 

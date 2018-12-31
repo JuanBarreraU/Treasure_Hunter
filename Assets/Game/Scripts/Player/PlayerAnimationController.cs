@@ -44,7 +44,7 @@ public class PlayerAnimationController : MonoBehaviour
         animPlayer.SetBool("StopClimp", true);
     }
 
-    public void Up()
+    public void UpAndDown()
     {
         ResetAllAnimations();
         animPlayer.SetBool("Up", true);

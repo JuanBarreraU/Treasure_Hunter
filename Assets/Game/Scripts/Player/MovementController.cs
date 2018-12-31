@@ -99,14 +99,14 @@ public class MovementController : MonoBehaviour
         { 
             rbPlayer.velocity = new Vector2(rbPlayer.velocity.x, fltDirY);
             rbPlayer.gravityScale = 0;
-            this.GetComponent<PlayerAnimationController>().Up();
+            this.GetComponent<PlayerAnimationController>().UpAndDown();
         }
 
         if (blDown == true && blCanDown == true && blInFloor == false)
         {
             rbPlayer.velocity = new Vector2(rbPlayer.velocity.x, -fltDirY);
             rbPlayer.gravityScale = 0;
-            this.GetComponent<PlayerAnimationController>().Up();
+            this.GetComponent<PlayerAnimationController>().UpAndDown();
         }
 
         Fall();
@@ -137,6 +137,10 @@ public class MovementController : MonoBehaviour
         {
             blUp = true;
         }
+        else
+        {
+            blUp = false;
+        }
     }
 
     public void Down()
@@ -154,12 +158,13 @@ public class MovementController : MonoBehaviour
 
     public void StopUp()
     {
-        if (blCanUpOrDown == true && blInFloor == false)
+        if (blCanUpOrDown == true && blInFloor == false || blCanDown == true && blInFloor == false)
         {
             blUp = false;
             blDown = false;
             rbPlayer.velocity = new Vector2(0f, 0f);
             this.GetComponent<PlayerAnimationController>().StopUp();
+            print("Stop");
         }
         
     }
